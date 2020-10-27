@@ -27,6 +27,14 @@ We were interested in this domain because the fishing industry and seafood is a 
 ### Dataset 1: King County Ambient Stream Monitoring Program 2007
   1. We found this data online from [King County](https://www.kingcounty.gov/~/media/services/environment/watersheds/streams-data/StreamTrendSummary2007.ashx?la=en)
 
+  2. The data was collected by the King County Watersheds and Rivers Data Collection team. The data shows trends in water quality from 1971-2007 in King County rivers and         streams, measuring parameters such as ammonia concentration, pH level, disolved oxygen (DO) content, water temperature, etc.
+
+ 3. There are 64 observations (rows) in the dataset.
+
+ 4. There are 16 features (columns) in the dataset.
+
+ 5. The data in this dataset can partially answer our last question. While it doesn't include information on food borne illnesses contracted in Seattle, it does include data on     water quality in areas where people would fish. We could use this as a starting point to further answer the question.
+
 ### Dataset 2: Summary Report of the 2018 COmmerical Fishery for Razor Clams
   1. We found this data online from the Washington Department of Fish and Wildlife and we are specifically looking at [Table 5](https://wdfw.wa.gov/sites/default/files/publications/02115/wdfw02115.pdf).
     
