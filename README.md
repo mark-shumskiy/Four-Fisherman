@@ -24,14 +24,9 @@ We were interested in this domain because the fishing industry and seafood is a 
 
 
 ## Finding Data
-### 1. Where did you download the data?
-We downloaded this data from the Washington Department of Fish and Wildlife and King County Ambient Stream Monitoring Program for 2007 (Long Term Analysis Trend).
+### Dataset 1: King County Ambient Stream Monitoring Program 2007
 
+### Dataset 2: Summary Report of the 2018 COmmerical Fishery for Razor Clams
 
-### 2. How was the data collected or generated?
+### Dataset 3: Washington Review of Commercial Fisheries 2014-2015 Sardine and Mackerel adn 2014 Anchovy
 
-### 3. How many obersvations (rows) are in your data?
-
-### 4. How many features (columns) are in your data?
-
-### 5. What questions (from above) can be answered using the data in this dataset?
