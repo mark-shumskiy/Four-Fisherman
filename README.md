@@ -25,7 +25,8 @@ We were interested in this domain because the fishing industry and seafood is a 
 
 ## Finding Data
 ### 1. Where did you download the data?
-We downloaded this data from 
+We downloaded this data from this website:
+
 
 ### 2. How was the data collected or generated?
 
