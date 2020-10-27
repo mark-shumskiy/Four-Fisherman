@@ -27,8 +27,17 @@ We were interested in this domain because the fishing industry and seafood is a 
 ### Dataset 1: King County Ambient Stream Monitoring Program 2007
   1. We found this data online from [King County](https://www.kingcounty.gov/~/media/services/environment/watersheds/streams-data/StreamTrendSummary2007.ashx?la=en)
 
-### Dataset 2: Summary Report of the 2018 Commerical Fishery for Razor Clams
-  1. We found this data online from the [Washington Department of Fish and Wildlife](
+### Dataset 2: Summary Report of the 2018 COmmerical Fishery for Razor Clams
+  1. We found this data online from the [Washington Department of Fish and Wildlife](https://wdfw.wa.gov/sites/default/files/publications/02115/wdfw02115.pdf) and we are specifically looking at Table 5.
+    
+  2. This data was collected by Zach Forster who is a researcher for the Washington Department of Fish and Wildlife. This data is about the daily landings, effort, and take home limits of the 2018 commercial razor clam season.
+  
+  3. This dataset has 96 observations.
+  
+  4. This dataset has 8 features.
+  
+  5. This data does not help answer any of the above questions
+  
 
 ### Dataset 3: Washington Review of Commercial Fisheries 2014-2015 Sardine and Mackerel adn 2014 Anchovy
 
