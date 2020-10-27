@@ -25,7 +25,7 @@ We were interested in this domain because the fishing industry and seafood is a 
 
 ## Finding Data
 ### 1. Where did you download the data?
-We downloaded this data from the Washington Department of Fish and Wildlife, King County Ambient Stream Monitoring Program for 2007 (Long Term Analysis Trend), and
+We downloaded this data from the Washington Department of Fish and Wildlife and King County Ambient Stream Monitoring Program for 2007 (Long Term Analysis Trend).
 
 
 ### 2. How was the data collected or generated?
