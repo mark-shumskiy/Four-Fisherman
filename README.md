@@ -24,12 +24,12 @@ We were interested in this domain because the fishing industry and seafood is a 
 
 
 ## Finding Data
-1. Where did you download the data?
+### 1. Where did you download the data?
 
-2. How was the data collected or generated?
+### 2. How was the data collected or generated?
 
-3. How many obersvations (rows) are in your data?
+### 3. How many obersvations (rows) are in your data?
 
-4. How many features (columns) are in your data?
+### 4. How many features (columns) are in your data?
 
-5. What questions (from above) can be answered using the data in this dataset?
+### 5. What questions (from above) can be answered using the data in this dataset?
