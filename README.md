@@ -36,7 +36,7 @@ We were interested in this domain because the fishing industry and seafood is a 
   
   4. This dataset has 8 features.
   
-  5. This data does not help answer any of the above questions
+  5. This data does not help answer any of the above questions.
   
 
 ### Dataset 3: Washington Review of Commercial Fisheries 2014-2015 Sardine and Mackerel and 2014 Anchovy
