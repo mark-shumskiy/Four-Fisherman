@@ -37,7 +37,7 @@ We were interested in this domain because the fishing industry and seafood is a 
   5. The data in this dataset can partially answer our last question. While it doesn't include information on food borne illnesses contracted in Seattle, it does include
      data on water quality in areas where people would fish. We could use this as a starting point to further answer the question.
 
-### Dataset 2: Summary Report of the 2018 COmmerical Fishery for Razor Clams
+### Dataset 2: Summary Report of the 2018 Commerical Fishery for Razor Clams
   1. We found this data online from the [Washington Department of Fish and Wildlife](https://wdfw.wa.gov/sites/default/files/publications/02115/wdfw02115.pdf) and we are specifically looking at Table 5.
     
   2. This data was collected by Zach Forster who is a researcher for the Washington Department of Fish and Wildlife. This data is about the daily landings, effort, and take home limits of the 2018 commercial razor clam season.
