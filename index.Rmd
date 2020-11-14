@@ -98,3 +98,16 @@ plot(state_shape)
 ```
 
 Teen abortion chart: This chart was intended to show the relationship between the level of sex-education and the rate of teen abortion in each state. We found that the average rate of teen abortions across the three categories does not vary by a significant amount. However, there are more things to consider, such as population, sex-health resources, and regional cultural differences.
+
+```{r contraceptive_use, echo=FALSE}
+library("tidyverse")
+library("dplyr")
+
+sex_education <- read.csv("data/sexeducation.csv")
+  
+comparison <- ggplot(data = sex_education,
+              aes(x=  "states",  y = Total_Contraceptives) )  + 
+  geom_boxplot()
+```
+Contraceptive plot: Every state uses different contraceptives to different extents, while some states have very few people that use them. To analyze the use of. these contraseptives, we created a boxplot showing a summary of the total contraseptives use in all states. From this data summary we can see that there are states where about 89.9% of the sexually active population use contraseptives, while there also being a state where about only 71.1% of the sexually active population use contraseptives. The median rests at about 82.2% showing us that majority of the states sexually active population use contraceptives. However, there are 
+other factors that go into factors the use of contraceptives.
