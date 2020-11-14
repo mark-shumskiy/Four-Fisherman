@@ -1,0 +1,52 @@
+state,sex_ed,state_id
+Alabama,NR,AL
+Alaska,NR,AK
+Arizona,NR,AZ
+Arkansas,NR,AR
+California,RMA,CA
+Colorado,NR,CO
+Connecticut,NR,CT
+Delaware,R,DE
+District of Columbia,R,DC
+Florida,R,FL
+Georgia,R,GA
+Hawaii,RMA,HI
+Idaho,NR,ID
+Illinois,NR,IL
+Indiana,NR,IN
+Iowa,RMA,IA
+Kansas,R,KS
+Kentucky,R,KY
+Louisiana,NR,LA
+Maine,RMA,ME
+Maryland,R,MD
+Massachusetts,NR,MA
+Michigan,NR,MI
+Minnesota,R,MN
+Mississippi,R,MS
+Missouri,NR,MO
+Montana,R,MT
+Nevada,R,NV
+New Hampshire,R,NH
+New Jersey,RMA,NJ
+New Mexico,R,NM
+New York,NR,NY
+North Carolina,RMA,NC
+North Dakota,R,ND
+Ohio,R,OH
+Oklahoma,NR,OK
+Oregon,RMA,OR
+Pennsylvania,NR,PA
+Rhode Island,RMA,RI
+South Carolina,R,SC
+South Dakota ,R,SD
+Tennessee,RMA,TN
+Texas,R,TX
+Utah,RMA,UT
+Vermont,R,VT
+Virginia,RMA,VA
+Washington,RMA,WA
+West Virginia,R,WV
+Wisconsin,NR,WI
+Nebraska,NR,NE
+Wyoming,NR,WY
