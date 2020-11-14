@@ -1,0 +1,52 @@
+state,state_id,pregnancy_rate,sex_ed
+Alabama,AL,39.9,NR
+Alaska,AK,39.5,NR
+Arizona,AZ,34.6,NR
+Arkansas,AR,45.9,NR
+California,CA,31.7,RMA
+Colorado,CO,28.2,NR
+Connecticut,CT,21.4,NR
+Delaware,DE,35.7,R
+District of Columbia,DC,41.9,R
+Florida,FL,34.7,R
+Georgia,GA,36.8,R
+Hawaii,HI,32.5,RMA
+Idaho,ID,28,NR
+Illinois,IL,31.8,NR
+Indiana,IN,33.4,NR
+Iowa,IA,25.3,RMA
+Kansas,KS,30,R
+Kentucky,KY,40.9,R
+Louisiana,LA,43.7,NR
+Maine,ME,24.1,RMA
+Maryland,MD,33.1,R
+Massachusetts,MA,17.9,NR
+Michigan,MI,29.5,NR
+Minnesota,MN,20.3,R
+Mississippi,MS,44.2,R
+Missouri,MO,33.8,NR
+Montana,MT,34.2,R
+Nebraska,NE,26.3,NR
+Nevada,NV,40.2,R
+New Hampshire,NH,17.5,R
+New Jersey,NJ,31.3,RMA
+New Mexico,NM,44.6,R
+New York,NY,35,NR
+North Carolina,NC,32.8,RMA
+North Dakota,ND,29.1,R
+Ohio,OH,32,R
+Oklahoma,OK,43.7,NR
+Oregon,OR,28.1,RMA
+Pennsylvania,PA,27.4,NR
+Rhode Island,RI,24.8,RMA
+South Carolina,SC,35.8,R
+South Dakota,SD,32.9,R
+Tennessee,TN,39,RMA
+Texas,TX,42.6,R
+Utah,UT,21.9,RMA
+Vermont,VT,20,R
+Virginia,VA,26.1,RMA
+Washington,WA,29.4,RMA
+West Virginia,WV,40.3,R
+Wisconsin,WI,22.5,NR
+Wyoming,WY,36.7,NR
