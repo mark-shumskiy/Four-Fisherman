@@ -2,12 +2,9 @@
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-In this project we examine three different data sets all surrounding the theme of sexual education in the United States and how it impacts sexual health. 
-The data includes information about teen pregnancy, teen abortion rates, and contraceptive use amongst all states in the year 2016. It also includes the level of sex education present within each state, 
-(RMA = required to be medically accurate, R = required (not medically accurate), NR = not required). In the project we seek to determine possible correlations between the level of sexual education in each state and the measures of sexual health listed above.
+In this project we examine three different data sets all surrounding the theme of sexual education in the United States and how it impacts sexual health. The data includes information about teen pregnancy, teen abortion rates, and contraceptive use amongst all states in the year 2016. It also includes the level of sex education present within each state, (RMA = required to be medically accurate, R = required (not medically accurate), NR = not required). In the project we seek to determine possible correlations between the level of sexual education in each state and the measures of sexual health listed above.
 
-Using our summary information function we calculated six main pieces of information about our datasets. We determined that New York had the highest teen abortion rate at 17.7 (abortions per 1000 women aged 15-19), Arkansas had the highest teen pregnancy rate at 45.9 (pregnancies per 1000 women aged 15-19),
-and Maine had the highest contraception use at 87.9%  (as a percentage for women age 15-49). 
+Using our summary information function we calculated six main pieces of information about our datasets. We determined that New York had the highest teen abortion rate at 17.7 (abortions per 1000 women aged 15-19), Arkansas had the highest teen pregnancy rate at 45.9 (pregnancies per 1000 women aged 15-19), and Maine had the highest contraception use at 87.9%  (as a percentage for women age 15-49). 
 
 ```{r}
 library("tidyverse")
@@ -42,21 +39,62 @@ summary_info_grouped <- summary_info %>%
 
 ```
 
-We created an aggregate table that looked a variety of variables relating to our three areas of focus: teen pregnancy, teen abortions, and contraceptive use. 
-By grouping the states by their level of required sex-education (not required, required and must be medically accurate, and required but not required to be medically accurate) we were able to ascertain a clearer picture.
-It seemed like the percentage of the population using contraceptives in each state was not very different across the three categories. This could partly be due to the age range from which we used data for contraceptive use, that being 15-49, instead of purely teens. 
-Another observation we made was that on average the rate of teen pregnancy was lower in states that require medically accurate sex-education than states of the other two categories. Similarly, it looks like states which require medically accurate sex-education tend to have lower abortion rates in teens.
+We created an aggregate table that looked a variety of variables relating to our three areas of focus: teen pregnancy, teen abortions, and contraceptive use. By grouping the states by their level of required sex-education (not required, required and must be medically accurate, and required but not required to be medically accurate) we were able to ascertain a clearer picture. It seemed like the percentage of the population using contraceptives in each state was not very different across the three categories. This could partly be due to the age range from which we used data for contraceptive use, that being 15-49, instead of purely teens. Another observation we made was that on average the rate of teen pregnancy was lower in states that require medically accurate sex-education than states of the other two categories. Similarly, it looks like states which require medically accurate sex-education tend to have lower abortion rates in teens.
 
 ```{r teen_preg, echo=FALSE}
+
+teen_preg <- (Teen_Pregnancy_2016) %>% 
+  group_by(sex_ed) %>% 
+  summarize(state, state_id, pregnancy_rate, sex_ed)
+
+ggplot(teen_preg) +
+geom_col(mapping = aes(
+    x = state_id, y = pregnancy_rate, fill = sex_ed)) +
+  coord_flip() 
+
 plot(teen_preg)
 ```
 
-Teen preg chart: This chart was intended to show the relationship between the level of sex-education and the rate of teen pregnancy in each state. 
-We found that the average rate of teen pregnancies in states that require medically accurate sex-education is lower than that of states that either do not require it or do not require the education to be medically accurate. 
+Teen preg chart: This chart was intended to show the relationship between the level of sex-education and the rate of teen pregnancy in each state. We found that the average rate of teen pregnancies in states that require medically accurate sex-education is lower than that of states that either do not require it or do not require the education to be medically accurate. 
 
 ```{r state_shape, echo=FALSE}
+
+install.packages("maps")
+install.packages("mapproj")
+library("maps")
+library("mapproj")
+
+requirement_level <- read.csv("data/state_level_requirement.csv")
+abortions <- read.csv("data/NationalandStatePregnancy.csv")
+
+abortions <- filter(
+  abortions,
+  year == "2016"
+)
+
+teen_abort <- full_join(abortions, requirement_level)
+teen_abort <- teen_abort %>% 
+  mutate(state = tolower(state))
+View(teen_abort)
+
+
+state_shape <- map_data("state") %>% 
+  rename(state = region) %>% 
+  full_join(teen_abort, by="state")
+View(state_shape)
+
+ggplot(state_shape) +
+  geom_polygon(
+    mapping = aes(
+      x = long, y = lat, group = group, fill = abortionratelt20),
+    color = "white",
+    size = .1
+  ) +
+  coord_map() +
+  scale_fill_continuous(low = "slategray2", high = "mediumorchid2") +
+  labs(fill = "Abortion Rate")
+
 plot(state_shape)
 ```
 
-Teen abortion chart: This chart was intended to show the relationship between the level of sex-education and the rate of teen abortion in each state. We found that the average rate of teen abortions across the three categories does not vary by a significant amount. 
-However, there are more things to consider, such as population, sex-health resources, and regional cultural differences.
+Teen abortion chart: This chart was intended to show the relationship between the level of sex-education and the rate of teen abortion in each state. We found that the average rate of teen abortions across the three categories does not vary by a significant amount. However, there are more things to consider, such as population, sex-health resources, and regional cultural differences.
