@@ -1,5 +1,8 @@
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+source("analysis.R")
+source("teen_abortion.R")
+
 ```
 
 In this project we examine three different data sets all surrounding the theme of sexual education in the United States and how it impacts sexual health. The data includes information about teen pregnancy, teen abortion rates, and contraceptive use amongst all states in the year 2016. It also includes the level of sex education present within each state, (RMA = required to be medically accurate, R = required (not medically accurate), NR = not required). In the project we seek to determine possible correlations between the level of sexual education in each state and the measures of sexual health listed above.
