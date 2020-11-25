@@ -43,4 +43,4 @@ teen_abort_map <- ggplot(state_shape) +
   blank_theme +
   scale_fill_continuous(low = "slategray2", high = "mediumorchid2") +
   labs(fill = "Abortion Rate") +
-  ggtitle("United States 2016 Teen Abortion")
+  ggtitle("United States 2016 Teen Abortion (age 15-19)")

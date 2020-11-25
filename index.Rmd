@@ -8,11 +8,13 @@ library("knitr")
 library("maps")
 library("mapproj")
 library("tidyverse")
+library("plotly")
 
 knitr::opts_chunk$set(echo = FALSE)
 
 source("scripts/teen_pregnancy.R")
 source("scripts/teen_abortion.R")
+source("scripts/teen_contraceptives.R")
 source("scripts/aggregate_table.R")
 
 ```
@@ -21,31 +23,30 @@ In this project we examine three different data sets all surrounding the theme o
 
 Using our summary information function we calculated six main pieces of information about our datasets. We determined that New York had the highest teen abortion rate at 17.7 (abortions per 1000 women aged 15-19), Arkansas had the highest teen pregnancy rate at 45.9 (pregnancies per 1000 women aged 15-19), and Maine had the highest contraception use at 87.9%  (as a percentage for women age 15-49). 
 
+We created an aggregate table that looked a variety of variables relating to our three areas of focus: teen pregnancy, teen abortions, and contraceptive use. By grouping the states by their level of required sex-education (not required, required and must be medically accurate, and required but not required to be medically accurate) we were able to ascertain a clearer picture. It seemed like the percentage of the population using contraceptives in each state was not very different across the three categories. This could partly be due to the age range from which we used data for contraceptive use, that being 15-49, instead of purely teens. Another observation we made was that on average the rate of teen pregnancy was lower in states that require medically accurate sex-education than states of the other two categories. Similarly, it looks like states which require medically accurate sex-education tend to have lower abortion rates in teens.
+
 ```{r}
-aggregate_table
+kable(aggregate_table)
 ```
 
-We created an aggregate table that looked a variety of variables relating to our three areas of focus: teen pregnancy, teen abortions, and contraceptive use. By grouping the states by their level of required sex-education (not required, required and must be medically accurate, and required but not required to be medically accurate) we were able to ascertain a clearer picture. It seemed like the percentage of the population using contraceptives in each state was not very different across the three categories. This could partly be due to the age range from which we used data for contraceptive use, that being 15-49, instead of purely teens. Another observation we made was that on average the rate of teen pregnancy was lower in states that require medically accurate sex-education than states of the other two categories. Similarly, it looks like states which require medically accurate sex-education tend to have lower abortion rates in teens.
+
+Teen Pregnancy Chart: This chart was intended to show the relationship between the level of sex-education and the rate of teen pregnancy in each state. We found that the average rate of teen pregnancies in states that require medically accurate sex-education is lower than that of states that either do not require it or do not require the education to be medically accurate. 
+
 
 ```{r}
 teen_preg_chart
 ```
 
-Teen preg chart: This chart was intended to show the relationship between the level of sex-education and the rate of teen pregnancy in each state. We found that the average rate of teen pregnancies in states that require medically accurate sex-education is lower than that of states that either do not require it or do not require the education to be medically accurate. 
 
+Teen Abortion Map: This map was intended to show the relationship between the level of sex-education and the rate of teen abortion in each state. We found that the average rate of teen abortions across the three categories does not vary by a significant amount. However, there are more things to consider, such as population, sex-health resources, and regional cultural differences.
 ```{r}
 teen_abort_map
 ```
 
-Teen abortion chart: This chart was intended to show the relationship between the level of sex-education and the rate of teen abortion in each state. We found that the average rate of teen abortions across the three categories does not vary by a significant amount. However, there are more things to consider, such as population, sex-health resources, and regional cultural differences.
 
-```{r contraceptive_use}
+Contraceptive Chart: Every state uses different contraceptives to different extents, while some states have very few people that use them. To analyze the use of these contraceptives, we created a scatter plot showing a summary of the total percentage of women age 15-49 that use contraceptives in all states. We also organize this data by the sexual education requirement level for each state. The state with the highest contraception use is Maine, a state that requires medically accurate sexual education, at 84.1%. The state with the second lowest contraception use is Arizona, a state that does not require any form of sexual education, at 67.4% Overall, the states with higher contraception use have mandated medically accurate sexual education, while those with the lowest contraception use have none. 
 
-sex_education <- read.csv("data/sexeducation.csv")
-  
-comparison <- ggplot(data = sex_education,
-              aes(x=  "states",  y = Total_Contraceptives) )  + 
-  geom_boxplot()
+
+```{r}
+contraceptive_chart
 ```
-Contraceptive plot: Every state uses different contraceptives to different extents, while some states have very few people that use them. To analyze the use of. these contraceptives, we created a boxplot showing a summary of the total contraseptives use in all states. From this data summary we can see that there are states where about 89.9% of the sexually active population use contraceptives, while there also being a state where about only 71.1% of the sexually active population use contraceptives. The median rests at about 82.2% showing us that majority of the states sexually active population use contraceptives. However, there are 
-other factors that go into factors the use of contraceptives.
