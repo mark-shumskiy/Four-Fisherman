@@ -13,10 +13,6 @@ teen_preg <- (teen_pregnancy_2016) %>%
 
 #Filter and adjust teen abortion data
 
-abortions <- filter(
-  abortions,
-  year == "2016"
-)
 teen_abort <- full_join(abortions, requirement_level)
 
 teen_abort <- teen_abort %>% 
@@ -40,27 +36,26 @@ blank_theme <- theme_bw() +
     panel.border = element_blank() # remove border around plot
   )
 
-#Select columns for contraception chart
-
-contraceptive_table <- contraceptives %>% 
-  select(state, total_contraceptives, sex_ed)
-
 #Create server and feed in teen pregnancy, abortion, and contraception charts
 
 server <- function(input, output) {
   output$bar <- renderPlotly({
-    teen_preg_chart <- ggplot(teen_preg) +
+    bar_data <- teen_preg %>% 
+      filter(sex_ed == input$category_input)
+    teen_preg_chart <- ggplot(bar_data) +
       geom_col(mapping = aes(
         x = reorder(state_id, pregnancy_rate), y = pregnancy_rate, fill = sex_ed)) +
       labs(x = "State", y = "Pregnancy Rate (age 15-19)", fill = "Level of Sexual Education") +
       ggtitle("United States 2016 Teen Pregnancy by State") +
-      coord_flip()
+      theme(axis.text.x = element_text(angle = 90))
     
     ggplotly(teen_preg_chart)
   })
   
   output$map <- renderPlotly({
-    teen_abort_map <- ggplot(state_shape) +
+    map_chart <- state_shape %>% 
+      filter(year == input$year_input)
+    teen_abort_map <- ggplot(map_chart) +
       geom_polygon(
         mapping = aes(
           x = long, y = lat, group = group, fill = abortionrate),
@@ -71,13 +66,14 @@ server <- function(input, output) {
       blank_theme +
       scale_fill_continuous(low = "slategray2", high = "mediumorchid2") +
       labs(fill = "Abortion Rate") +
-      ggtitle("United States 2016 Teen Abortion (age 15-19)")
+      ggtitle("United States Teen Abortion (age 15-19)")
     
     ggplotly(teen_abort_map)
   })
   
-  output$scatter <- renderPlotly({contraceptive_plot <- ggplot(contraceptive_table) +
-    geom_point(mapping = aes(x = state, y = total_contraceptives, fill = sex_ed )) +
+  output$scatter <- renderPlotly({contraceptive_plot <- ggplot(contraceptives) +
+    geom_point(mapping = aes_string(x = "state", y = input$y_input, 
+                                    fill = "sex_ed" )) +
     labs(x = "State", 
          y = "Percent of Women Who Use Contraceptives (age 15-49)", 
          fill = "Sex Ed") +

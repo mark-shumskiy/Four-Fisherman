@@ -45,14 +45,21 @@ intro_page <- tabPanel(
   )
 )
 
+category_names <- unique(teen_preg$sex_ed)
+
+category_input <- selectInput(
+  inputId = "category_input",
+  label = "Choose Level of Sexual Education",
+  choices = category_names
+)
+
 #Teen Pregnancy Page
 
 preg_page <- tabPanel(
   "Teen Pregnancy",
   sidebarLayout(
     sidebarPanel(
-      #y_input,
-      #year_input
+      category_input
     ),
     mainPanel(
       h2("Teen Pregnancy Visualization"),
@@ -67,12 +74,22 @@ preg_page <- tabPanel(
   )
 )
 
+year_input <- sliderInput(
+  inputId = "year_input",
+  label = "Choose a Year",
+  min = 2005,
+  max = 2016,
+  value = 2016,
+  step = 1,
+  sep = ""
+)
+
+
 abortion_page <- tabPanel(
   "Teen Abortion",
   sidebarLayout(
     sidebarPanel(
-      #y_input,
-      #year_input
+      year_input
     ),
     mainPanel(
       h2("Teen Abortion Visualization"),
@@ -87,12 +104,20 @@ abortion_page <- tabPanel(
   )
 )
 
+contraceptive_type <- colnames(contraceptives)
+
+contraception_input <- selectInput(
+  inputId = "y_input",
+  label = "Choose a Y Value",
+  choices = contraceptive_type
+)
+
+
 contraception_page <- tabPanel(
   "Contraception",
   sidebarLayout(
     sidebarPanel(
-      #y_input,
-      #year_input
+      contraception_input
     ),
     mainPanel(
       h2("Contraception Visualization"),
