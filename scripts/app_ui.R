@@ -1,9 +1,4 @@
 # Load in data
-library(shiny)
-library(tidyverse)
-library(maps)
-library(mapproj)
-library(plotly)
 
 requirement_level <- read.csv("data/state_level_requirement.csv")
 abortions <- read.csv("data/NationalandStatePregnancy.csv")
@@ -106,7 +101,10 @@ abortion_page <- tabPanel(
   )
 )
 
-contraceptive_type <- colnames(contraceptives)
+adjusted_con <- contraceptives %>% 
+  select(-state, -sex_ed)
+
+contraceptive_type <- colnames(adjusted_con)
 
 contraception_input <- selectInput(
   inputId = "y_input",

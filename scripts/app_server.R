@@ -22,6 +22,7 @@ state_shape <- map_data("state") %>%
   rename(state = region) %>% 
   full_join(teen_abort, by="state")
 
+
 #Create blank theme for teen abortion map
 
 blank_theme <- theme_bw() +
@@ -45,7 +46,7 @@ server <- function(input, output) {
     teen_preg_chart <- ggplot(bar_data) +
       geom_col(mapping = aes(
         x = reorder(state_id, pregnancy_rate), y = pregnancy_rate, fill = sex_ed)) +
-      labs(x = "State", y = "Pregnancy Rate (age 15-19)", fill = "Level of Sexual Education") +
+      labs(x = "State", y = "Pregnancy Rate (age 15-19)", fill = "Sex Ed") +
       ggtitle("United States 2016 Teen Pregnancy by State") +
       theme(axis.text.x = element_text(angle = 90))
     
