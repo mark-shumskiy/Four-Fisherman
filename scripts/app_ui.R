@@ -5,12 +5,39 @@ abortions <- read.csv("data/NationalandStatePregnancy.csv")
 contraceptives <- read.csv("data/contraceptives.csv")
 teen_pregnancy_2016 <- read.csv("data/teen_preg_2016.csv")
 
+#Adjust header font
+
+header_font <- tags$head(
+  tags$style(HTML("
+      @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+      
+      h1 {
+        font-family: 'Crimson Text', serif;
+        font-weight: 600;
+      }
+
+    ")
+  )
+)
+
+subheader_font <- tags$head(
+  tags$style(HTML("
+      @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@1&display=swap');
+      h1 {
+        font-family: 'Crimson Text', serif;
+        font-weight: 400;
+      }
+
+    ")
+  )
+)
+
 #Introduction Page
 
 intro_page <- tabPanel(
   "Introduction",
   mainPanel(
-    h2("Sexual Education in the United States"),
+    h2("The State of Sexual Education"),
     p("In this project we examine three different data sets all surrounding the
     theme of sexual education in the United States and how it impacts sexual 
     health. The data includes information about teen pregnancy, teen abortion 
@@ -28,7 +55,7 @@ intro_page <- tabPanel(
     p("Using information from each of the datasets, we calculated six summary statistics 
     to get a basic understanding of our data. We determined that New York had the highest 
     teen abortion rate at 17.7 and Arkansas had the highest teen pregnancy rate at 45.9.
-    The state withe highest contraception use was Maine, at 87.9%."),
+    The state with the highest contraception use was Maine, at 87.9%."),
     
     p("We sourced our data from two different places. Both the pregnancy data and the
       abortion data came from the Guttmacher Institute, which is a pro-choice research and 
@@ -40,7 +67,7 @@ intro_page <- tabPanel(
   )
 )
 
-category_names <- unique(teen_preg$sex_ed)
+category_names <- unique(teen_preg$Sexual_Education)
 
 category_input <- selectInput(
   inputId = "category_input",
@@ -103,8 +130,8 @@ abortion_page <- tabPanel(
   )
 )
 
-adjusted_con <- contraceptives %>% 
-  select(-state, -sex_ed)
+adjusted_con <- renamed_contraceptives %>% 
+  select(-State, -Sexual_Education)
 
 contraceptive_type <- colnames(adjusted_con)
 
@@ -153,6 +180,7 @@ summary_page <- tabPanel(
 # Render fluid page
 
 ui <- fluidPage(
+  header_font,
   h1("United States Sexual Education"),
   navbarPage(
     inverse = TRUE,

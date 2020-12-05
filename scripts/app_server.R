@@ -5,11 +5,14 @@ abortions <- read.csv("data/NationalandStatePregnancy.csv")
 contraceptives <- read.csv("data/contraceptives.csv")
 teen_pregnancy_2016 <- read.csv("data/teen_preg_2016.csv")
 
-#Filter teen pregnancy data
+#Filter and rename teen pregnancy data
 
 teen_preg <- (teen_pregnancy_2016) %>% 
   group_by(sex_ed) %>% 
-  select(state, state_id, pregnancy_rate, sex_ed)
+  select(state, state_id, pregnancy_rate, sex_ed) %>%
+  rename("State" = "state") %>% 
+  rename("Pregnancy_Rate" = "pregnancy_rate") %>% 
+  rename("Sexual_Education" = "sex_ed")
 
 #Filter and adjust teen abortion data
 
@@ -20,7 +23,8 @@ teen_abort <- teen_abort %>%
 
 state_shape <- map_data("state") %>% 
   rename(state = region) %>% 
-  full_join(teen_abort, by="state")
+  full_join(teen_abort, by="state") %>% 
+  rename("Abortion_Rate" = "abortionrate")
 
 
 #Create blank theme for teen abortion map
@@ -37,15 +41,28 @@ blank_theme <- theme_bw() +
     panel.border = element_blank() # remove border around plot
   )
 
+#Rename Columns for contraception data
+
+renamed_contraceptives <- contraceptives %>% 
+  rename("Female_Sterilization" = "female_sterlization") %>% 
+  rename("IUD" ="iud") %>% 
+  rename("Birth_Control_Pill" = "pill") %>% 
+  rename("Condom" = "condom") %>% 
+  rename("None" = "none") %>% 
+  rename("Other" = "other") %>% 
+  rename("Total_Contraceptives" = "total_contraceptives") %>% 
+  rename("Sexual_Education" = "sex_ed") %>% 
+  rename("State" = "state")
+  
 #Create server and feed in teen pregnancy, abortion, and contraception charts
 
 server <- function(input, output) {
   output$bar <- renderPlotly({
     bar_data <- teen_preg %>% 
-      filter(sex_ed == input$category_input)
+      filter(Sexual_Education == input$category_input)
     teen_preg_chart <- ggplot(bar_data) +
       geom_col(mapping = aes(
-        x = reorder(state_id, pregnancy_rate), y = pregnancy_rate, fill = sex_ed)) +
+        x = reorder(state_id, Pregnancy_Rate), y = Pregnancy_Rate, fill = Sexual_Education)) +
       labs(x = "State", y = "Pregnancy Rate (age 15-19)", fill = "Sex Ed") +
       ggtitle("United States 2016 Teen Pregnancy by State") +
       theme(axis.text.x = element_text(angle = 90))
@@ -59,7 +76,7 @@ server <- function(input, output) {
     teen_abort_map <- ggplot(map_chart) +
       geom_polygon(
         mapping = aes(
-          x = long, y = lat, group = group, fill = abortionrate),
+          x = long, y = lat, group = group, fill = Abortion_Rate),
         color = "white",
         size = .1
       ) +
@@ -72,11 +89,11 @@ server <- function(input, output) {
     ggplotly(teen_abort_map)
   })
   
-  output$scatter <- renderPlotly({contraceptive_plot <- ggplot(contraceptives) +
-    geom_point(mapping = aes_string(x = "state", y = input$y_input, 
-                                    fill = "sex_ed" )) +
+  output$scatter <- renderPlotly({contraceptive_plot <- ggplot(renamed_contraceptives) +
+    geom_point(mapping = aes_string(x = "State", y = input$y_input, 
+                                    fill = "Sexual_Education" )) +
     labs(x = "State", 
-         y = "Percent of Women Who Use Contraceptives (age 15-49)", 
+         y = "Percent of Women Using Contraceptives (age 15-49)", 
          fill = "Sex Ed") +
     ggtitle("United States 2016 Contraceptive Use") +
     theme(axis.text.x = element_text(angle = 90))
