@@ -34,7 +34,9 @@ intro_page <- tabPanel(
       abortion data came from the Guttmacher Institute, which is a pro-choice research and 
       policy organization. IDK where anirit got hsi contraceptive data. We also used information
       from the federal and state governments to determine the level of sexual education
-      in each state.")
+      in each state."),
+   
+     tags$img(src = "https://www.marriagegeek.com/wp-content/uploads/2018/05/sexbaby.png")  
   )
 )
 
