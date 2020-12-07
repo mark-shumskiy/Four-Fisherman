@@ -1,3 +1,9 @@
+library("shiny")
+library("tidyverse")
+library("plotly")
+library("maps")
+library("mapproj")
+
 # Load in data
 
 requirement_level <- read.csv("data/state_level_requirement.csv")

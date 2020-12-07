@@ -1,3 +1,9 @@
+library("shiny")
+library("tidyverse")
+library("plotly")
+library("maps")
+library("mapproj")
+
 # Load in data
 
 requirement_level <- read.csv("data/state_level_requirement.csv")
@@ -57,11 +63,12 @@ intro_page <- tabPanel(
     teen abortion rate at 17.7 and Arkansas had the highest teen pregnancy rate at 45.9.
     The state with the highest contraception use was Maine, at 87.9%."),
     
-    p("We sourced our data from two different places. Both the pregnancy data and the
-      abortion data came from the Guttmacher Institute, which is a pro-choice research and 
-      policy organization. IDK where anirit got hsi contraceptive data. We also used information
+    p("We sourced our data from one main place. The pregnancy data, the
+      abortion data, and the contraceptive use data all came from the Guttmacher 
+      Institute, which is a pro-choice research and policy organization. We also used information
       from the federal and state governments to determine the level of sexual education
-      in each state."),
+      in each state, as well as research reports from Planned Parenthood to determine
+      a rough timeline of sexual eduacation legislation."),
    
      tags$img(src = "https://www.marriagegeek.com/wp-content/uploads/2018/05/sexbaby.png")  
   )
@@ -124,8 +131,7 @@ abortion_page <- tabPanel(
         cultural differences. This map can display the abortion rate data for 
         12 years. We found that abortion rates were much higher in 2005, and they 
         have steadily been decreasing up until the most recent year inlcuded in 
-        the data, 2016. (ill do some research about when states passed
-        legislation about sex-ed)")
+        the data, 2016.")
     )
   )
 )
@@ -159,13 +165,7 @@ contraception_page <- tabPanel(
         which we included in the dropdown menu, allowing users to compare states
         for each type of contraceptive, as well as a total of all contraceptives used.
         We also organize this data by the sexual education requirement 
-        level for each state. The state with the highest total contraception use is 
-        Maine, a state that requires medically accurate sexual education, at 
-        84.1%. The state with the second lowest contraception use is Arizona, a 
-        state that does not require any form of sexual education, at 67.4% 
-        Overall, the states with higher contraception use have mandated 
-        medically accurate sexual education, while those with the lowest 
-        contraception use have none.")
+        level for each state.")
     )
   )
 )
@@ -173,7 +173,44 @@ contraception_page <- tabPanel(
 summary_page <- tabPanel(
   "Summary",
   mainPanel(
-    p("This is where we would write a summary about our data and our project."),
+    h2("Summary Analysis"),
+    
+    p("Our goal for this project was to see if there is a connection between the teen pregnancy rates, teen abortion 
+      rates, and teen contraceptive use in each state to the level of sexual education
+      mandated. There are 19 states that do not require any form of sex-ed to be taught (NR), 
+      20 states that require sex-ed, but do not regulate the curriculum (R), and 12 states 
+      that require medically accurate sex-ed (RMA)."),
+    
+    h3("Teen Pregnancy"),
+    p("Looking at teen pregnancy rates across all states in 2016, we found that the average 
+      teen pregnancy rate for NR states is 32.59. For R states, the average rate was 
+      34.34, and the average for RMA states was 28.92. While the average for R was higher 
+      than it was for NR, the lowest average teen pregnancy rate occurred in RMA states, 
+      which is what we hoped to see. The individual state with the lowest teen 
+      pregnancy rate was New Hampshire, which is an R state, at 17.5. The state with 
+      the highest teen pregnancy rate was Arkansas, an NR state, at 45.9."),
+    
+    h3("Teen Abortion"),
+    p("The interactive map we made to visualize teen abortions by state over a 12 year span 
+      showed a significant decrease in teen abortion rates from 2005 to 2016. We found that 
+      federal funding for abstinence only programs shot up from $80 million in 2001 to $167 
+      million in 2005. However, many states wanted to incorporate more comprehensive sex-ed. 
+      In the late 2000's, research found comprehensive sex-ed to postively impact 
+      the sexual behavior in teens. The Obama administration recognized the 
+      effectiveness of evidence-based sex-ed programs and transferred funds from 
+      the Community-based Abstinence Program and budgeted $190 million for two new 
+      programs: Teen Pregnancy Prevention Program (TPPP) and Personal Responsibility 
+      Education Program (PREP)."),
+    
+    h3("Contraceptive Use"),
+    p("The category with the highest average rate of contraceptive use was RMA at 76.86, while
+    the category with the lowest average use was R at 73.12. However, NR was not ahead by much
+    at 74.81. The state with the highest total contraception use is Maine, a state that 
+    requires medically accurate sexual education, at 84.1%. The state with the 
+    second lowest contraception use is Arizona, a state that does not require any 
+    form of sexual education, at 67.4%. Overall, the states with higher contraception 
+    use have mandated medically accurate sexual education, while those with  
+    lower contraception use rates have none.")
   )
 )
 
