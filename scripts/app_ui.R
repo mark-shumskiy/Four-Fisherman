@@ -1,9 +1,3 @@
-library("shiny")
-library("tidyverse")
-library("plotly")
-library("maps")
-library("mapproj")
-
 # Load in data
 
 requirement_level <- read.csv("data/state_level_requirement.csv")
@@ -20,18 +14,6 @@ header_font <- tags$head(
       h1 {
         font-family: 'Crimson Text', serif;
         font-weight: 600;
-      }
-
-    ")
-  )
-)
-
-subheader_font <- tags$head(
-  tags$style(HTML("
-      @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@1&display=swap');
-      h1 {
-        font-family: 'Crimson Text', serif;
-        font-weight: 400;
       }
 
     ")
@@ -68,7 +50,7 @@ intro_page <- tabPanel(
       Institute, which is a pro-choice research and policy organization. We also used information
       from the federal and state governments to determine the level of sexual education
       in each state, as well as research reports from Planned Parenthood to determine
-      a rough timeline of sexual eduacation legislation."),
+      a rough timeline of sexual education legislation."),
    
      tags$img(src = "https://www.marriagegeek.com/wp-content/uploads/2018/05/sexbaby.png")  
   )
@@ -130,7 +112,7 @@ abortion_page <- tabPanel(
         consider, such as population, sex-health resources, and regional 
         cultural differences. This map can display the abortion rate data for 
         12 years. We found that abortion rates were much higher in 2005, and they 
-        have steadily been decreasing up until the most recent year inlcuded in 
+        have steadily been decreasing up until the most recent year included in 
         the data, 2016.")
     )
   )
@@ -161,7 +143,7 @@ contraception_page <- tabPanel(
         some states have very few people that use them. To analyze the use of 
         these contraceptives, we created a scatter plot showing the 
         percentage of women age 15-49 that use contraceptives in all 
-        states. The data that we used separated different types of contracpetives,
+        states. The data that we used separated different types of contraceptives,
         which we included in the dropdown menu, allowing users to compare states
         for each type of contraceptive, as well as a total of all contraceptives used.
         We also organize this data by the sexual education requirement 
