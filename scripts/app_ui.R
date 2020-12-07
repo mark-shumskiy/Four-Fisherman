@@ -1,9 +1,11 @@
 # Load in data
 
 requirement_level <- read.csv("data/state_level_requirement.csv")
-abortions <- read.csv("data/NationalandStatePregnancy.csv")
+abortions <- read.csv("data/nationalandstatepregnancy.csv")
 contraceptives <- read.csv("data/contraceptives.csv")
 teen_pregnancy_2016 <- read.csv("data/teen_preg_2016.csv")
+
+source("scripts/app_server.R")
 
 #Adjust header font
 

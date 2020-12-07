@@ -5,8 +5,9 @@ account: mshumskiy
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3369190
-bundleId: 3957491
+bundleId: 3957569
 url: https://mshumskiy.shinyapps.io/Four-Fisherman/
-when: 1607382722.85985
+when: 1607384363.92841
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: .RData|index.html|index.Rmd|README.md|scripts/.Rhistory|irrelevant
