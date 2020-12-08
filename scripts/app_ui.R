@@ -163,7 +163,13 @@ summary_page <- tabPanel(
       rates, and teen contraceptive use in each state to the level of sexual education
       mandated. There are 19 states that do not require any form of sex-ed to be taught (NR), 
       20 states that require sex-ed, but do not regulate the curriculum (R), and 12 states 
-      that require medically accurate sex-ed (RMA)."),
+      that require medically accurate sex-ed (RMA). We expect states in the RMA 
+      category to average lower in teen pregnancy and teen abortion rates, and higher in
+      contraceptive use. However, there are other things to consider, like population, resources,  
+      religious teachings and practices, and cultural differences across states. For 
+      example, notorious religious states may not require any sexual education, but premarital sex, 
+      abortion, and any sort of contraceptive use is heavily frowned upon and this ideaology 
+      is instilled at a young age."),
     
     h3("Teen Pregnancy"),
     p("Looking at teen pregnancy rates across all states in 2016, we found that the average 
